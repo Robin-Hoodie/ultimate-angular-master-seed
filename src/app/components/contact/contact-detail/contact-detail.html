@@ -157,6 +157,11 @@
       </div>
     </div>
 
+    <contact-tag
+      tag="$ctrl.contact.tag"
+      on-change="$ctrl.tagChange($event);">
+    </contact-tag>
+
     <div ng-if="$ctrl.isNewContact">
       <button
         ng-disabled="contactDetailForm.$invalid"
@@ -167,7 +172,7 @@
 
     <div ng-if="!$ctrl.isNewContact">
       <button class="delete"
-        ng-click="$ctrl.deleteContact();">
+              ng-click="$ctrl.deleteContact();">
         Delete contact
       </button>
     </div>
