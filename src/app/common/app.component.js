@@ -9,7 +9,7 @@ angular
   .config(function($stateProvider) {
     $stateProvider
       .state('app', {
-        // redirectTo: 'contacts',
+        redirectTo: 'new',
         url: '/app',
         data: {
           requiredAuth: true

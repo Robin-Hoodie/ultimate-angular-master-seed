@@ -3,7 +3,7 @@ function AuthFormController() {
 
   ctrl.$onChanges = function(changes) {
     if (changes.user) {
-      ctrl.user = angular.copy(ctrl.user);
+      ctrl.user = angular.copy(changes.user);
     }
   };
 

@@ -14,14 +14,14 @@ angular
     $firebaseRefProvider
       .registerUrl({
         default: config.databaseURL,
-        default: config.databaseURL + '/contacts'
+        contacts: config.databaseURL + '/contacts'
       });
     firebase.initializeApp(config);
   })
   .run(function($transitions, $state, AuthService) {
     $transitions.onStart({
       to: function(state) {
-        return !!(state.data && state.data.required);
+        return !!(state.data && state.data.requiredAuth);
       }
     }, function() {
       return AuthService
