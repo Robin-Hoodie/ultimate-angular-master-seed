@@ -1,25 +1,27 @@
-function LoginController(AuthService, $state) {
-  var ctrl = this;
+class LoginController {
 
-  ctrl.$onInit = function() {
-    ctrl.error = null;
-    ctrl.user = {
+  constructor(AuthService, $state) {
+    this.AuthService = AuthService;
+    this.$state = $state;
+  }
+
+  $onInit () {
+    this.error = null;
+    this.user = {
       email: '',
       password: ''
     };
   };
 
-  ctrl.loginUser = function(event) {
-    return AuthService
+  loginUser (event) {
+    return this.AuthService
       .login(event.user)
       .then(function() {
-        $state.go('app');
+        this.$state.go('app');
       }, function(reason) {
-        ctrl.error = reason.message;
+        this.error = reason.message;
       });
   };
 }
 
-angular
-  .module('components.auth')
-  .controller('LoginController', LoginController);
+export default LoginController;

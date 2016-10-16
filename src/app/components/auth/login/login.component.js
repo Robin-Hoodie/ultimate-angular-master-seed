@@ -1,12 +1,16 @@
-var login = {
-  templateUrl: './login.html',
-  controller: 'LoginController'
+import angular from 'angular';
+
+import LoginHtml from './login.html';
+import LoginController from './login.controller';
+
+const login = {
+  template: LoginHtml,
+  controller: LoginController
 };
 
 angular
   .module('components.auth')
-  .component('login', login)
-  .config(function($stateProvider, $urlRouterProvider) {
+  .config(($stateProvider, $urlRouterProvider) => {
     $stateProvider
       .state('auth', {
         redirectTo: 'auth.login',
@@ -19,3 +23,5 @@ angular
       });
     $urlRouterProvider.otherwise('/auth/login');
   });
+
+export default login;

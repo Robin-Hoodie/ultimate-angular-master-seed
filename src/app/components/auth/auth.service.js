@@ -1,55 +1,58 @@
-function AuthService($firebaseAuth) {
-  var auth = $firebaseAuth();
-  var authData = null;
+class AuthService {
 
-  function storeAuthData(response) {
-    authData = response;
-    return authData;
+  constructor($firebaseAuth) {
+    this.$firebaseAuth = $firebaseAuth;
+    this.auth = $firebaseAuth;
+    this.authData = null;
   }
 
-  function onSignIn(user) {
-    authData = user;
-    return auth.$requireSignIn();
+  _storeAuthData(response) {
+    this.authData = response;
+    return this.authData;
   }
 
-  function clearAuthData() {
-    authData = null;
+  _onSignIn(user) {
+    this.authData = user;
+    return this.auth.$requireSignIn();
   }
 
-  this.login = function(user) {
-    return auth
+  _clearAuthData() {
+    this.authData = null;
+  }
+
+  login (user) {
+    return this.auth
       .$signInWithEmailAndPassword(user.email, user.password)
-      .then(storeAuthData);
+      .then(this._storeAuthData);
   };
 
-  this.register = function(user) {
-    return auth
+  register (user) {
+    return this.auth
       .$createUserWithEmailAndPassword(user.email, user.password)
-      .then(storeAuthData);
+      .then(this._storeAuthData);
   };
 
-  this.requireAuthentication = function() {
-    return auth
+  requireAuthentication() {
+    return this.auth
       .$waitForSignIn()
-      .then(onSignIn);
+      .then(this._onSignIn);
   };
 
-  this.isAuthenticated = function() {
-    return !!authData;
+  isAuthenticated() {
+    return !!this.authData;
   };
 
-  this.getUser = function() {
-    if (authData) {
-      return authData;
+  getUser () {
+    if (this.authData) {
+      return this.authData;
     }
   };
 
-  this.logout = function() {
-    return auth
+  logout () {
+    return this.auth
       .$signOut()
-      .then(clearAuthData);
+      .then(this._clearAuthData);
   }
 }
 
-angular.module('components.auth')
-       .service('AuthService', AuthService);
+export default AuthService;

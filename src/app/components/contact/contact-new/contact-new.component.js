@@ -1,12 +1,15 @@
-var contactNew = {
-  templateUrl: './contact-new.html',
-  controller: 'ContactNewController'
+import angular from 'angular';
+
+import ContactNewHtml from './contact-new.html';
+import ContactNewController from './contact-new.controller';
+
+const contactNew = {
+  template: ContactNewHtml,
+  controller: ContactNewController
 };
 
-angular
-  .module('components.contact')
-  .component('contactNew', contactNew)
-  .config(function($stateProvider) {
+angular.module('components.contact')
+  .config(($stateProvider) => {
     $stateProvider
       .state('new', {
         parent: 'app',
@@ -14,3 +17,5 @@ angular
         component: 'contactNew'
       });
   });
+
+export default contactNew;

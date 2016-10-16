@@ -20,6 +20,4 @@ function ContactService(AuthService, $firebaseRef, $firebaseArray, $firebaseObje
 
 }
 
-angular
-  .module('components.contact')
-  .factory('ContactService', ContactService);
+export default ContactService;

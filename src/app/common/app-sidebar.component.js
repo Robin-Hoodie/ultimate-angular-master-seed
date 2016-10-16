@@ -1,8 +1,9 @@
-var appSidebar = {
-  templateUrl: './app-sidebar.html',
-  controller: 'AppSidebarController'
+import AppSidebarHtml from './app-sidebar.html';
+import AppSidebarController from './app-sidebar.controller';
+
+const appSidebar = {
+  template: AppSidebarHtml,
+  controller: AppSidebarController
 };
 
-angular
-  .module('common')
-  .component('appSidebar', appSidebar);
+export default appSidebar;

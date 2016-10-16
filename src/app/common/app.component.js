@@ -1,12 +1,16 @@
-var app = {
-  templateUrl: './app.html',
-  controller: 'AppController'
+import angular from 'angular';
+
+import AppHtml from './app.html'
+import AppController from './app.controller';
+
+const app = {
+  template: AppHtml,
+  controller: AppController
 };
 
 angular
   .module('common')
-  .component('app', app)
-  .config(function($stateProvider) {
+  .config(($stateProvider) => {
     $stateProvider
       .state('app', {
         redirectTo: 'new',
@@ -17,3 +21,5 @@ angular
         component: 'app'
       });
   });
+
+export default app;

@@ -1,15 +1,18 @@
-var contactEdit = {
+import angular from 'angular';
+
+import ContactEditHtml from './contact-edit.html';
+import ContactEditController from './contact-edit.controller';
+
+const contactEdit = {
   bindings: {
     contact: '<'
   },
-  templateUrl: './contact-edit.html',
-  controller: 'ContactEditController'
+  template: ContactEditHtml,
+  controller: ContactEditController
 };
 
-angular
-  .module('components.contact')
-  .component('contactEdit', contactEdit)
-  .config(function($stateProvider) {
+angular.module('components.contact')
+  .config(($stateProvider) => {
     $stateProvider
       .state('contact', {
         parent: 'app',
@@ -23,3 +26,5 @@ angular
         }
       });
   });
+
+export default contactEdit;
