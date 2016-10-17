@@ -1,11 +1,13 @@
 import angular from 'angular';
 import UIRouter from 'angular-ui-router';
 
+import ContactRoute from './contact.route';
+import ContactService from './contact.service';
 import ContactDetailComponent from './contact-detail/contact-detail.component';
 import ContactEditComponent from './contact-edit/contact-edit.component';
 import ContactNewComponent from './contact-new/contact-new.component';
 import ContactTagComponent from './contact-tag/contact-tag.component';
-import ContactService from './contact.service';
+
 
 const contact = angular
   .module('components.contact', [

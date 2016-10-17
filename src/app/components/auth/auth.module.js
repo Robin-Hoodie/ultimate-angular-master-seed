@@ -1,6 +1,8 @@
 import angular from 'angular';
 import UIRouter from 'angular-ui-router';
 import Firebase from 'firebase';
+
+import AuthRoute from './auth.route';
 import AuthConfig from './auth.config';
 import AuthRun from './auth.run';
 import AuthService from './auth.service';
@@ -14,6 +16,7 @@ const auth = angular
     Firebase
   ])
   .config(AuthConfig)
+  .config(AuthRoute)
   .run(AuthRun)
   .component('authForm', AuthFormComponent)
   .component('login', LoginComponent)
