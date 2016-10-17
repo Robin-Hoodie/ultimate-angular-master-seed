@@ -17,16 +17,13 @@ module.exports = {
     port: 4000,
     open: true
   },
-  resolve: {
-    extensions: ['', 'js']
-  },
   devtool: 'inline-source-map',
   module: {
     loaders: [
       {
-        test: /\.js&/,
+        test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['babel']
+        loader: 'babel'
       },
       {
         test: /\.html$/,

@@ -1,3 +1,4 @@
+import angular from 'angular';
 import UIRouter from 'angular-ui-router';
 import AngularLoadingBar from 'angular-loading-bar';
 

@@ -1,6 +1,6 @@
 import angular from 'angular';
 
-import AppHtml from './app.html'
+import AppHtml from './app.html';
 import AppController from './app.controller';
 
 const app = {

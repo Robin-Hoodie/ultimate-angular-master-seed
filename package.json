@@ -4,7 +4,7 @@
   "author": "@toddmotto",
   "description": "Contacts manager app for Ultimate AngularJS",
   "scripts": {
-    "start": "rimraf dist/**/*.* && webpack-dev-server --inline --hot",
+    "start": "rimraf dist/**/*.* && webpack-dev-server --inline",
     "test": "karma start",
     "deploy": "gulp production --deploy"
   },
@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "angular-mocks": "^1.5.8",
+    "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.9.0",
     "css-loader": "^0.25.0",
@@ -37,6 +38,6 @@
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.2"
+    "webpack-dev-server": "^1.16.1"
   }
 }

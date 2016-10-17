@@ -3,6 +3,7 @@ import Common from './common/app.module';
 import Components from './components/components.module';
 import RootComponent from './root.component';
 
+console.log('Common', Common);
 const root = angular
   .module('root', [
     Common,
