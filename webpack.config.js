@@ -5,7 +5,7 @@ var path = require('path');
 module.exports = {
   entry: {
     'app': path.join(__dirname, 'src/app/root.module.js'),
-    'vendor': path.join(__dirname,'src/app/vendor.js')
+    'vendor': path.join(__dirname, 'src/app/vendor.js')
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -40,6 +40,10 @@ module.exports = {
       {
         test: /\.(eot|ttf|)$/,
         loader: 'file'
+      },
+      {
+        test: /\.(png|ico)$/,
+        loader: 'url?limit=10000'
       }
     ]
   },

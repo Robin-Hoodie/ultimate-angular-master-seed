@@ -2,7 +2,7 @@ class AuthService {
 
   constructor($firebaseAuth) {
     this.$firebaseAuth = $firebaseAuth;
-    this.auth = $firebaseAuth;
+    this.auth = $firebaseAuth();
     this.authData = null;
   }
 
@@ -23,19 +23,19 @@ class AuthService {
   login (user) {
     return this.auth
       .$signInWithEmailAndPassword(user.email, user.password)
-      .then(this._storeAuthData);
+      .then(() => this._storeAuthData());
   };
 
   register (user) {
     return this.auth
       .$createUserWithEmailAndPassword(user.email, user.password)
-      .then(this._storeAuthData);
+      .then(() => this._storeAuthData);
   };
 
   requireAuthentication() {
     return this.auth
       .$waitForSignIn()
-      .then(this._onSignIn);
+      .then(() => this._onSignIn);
   };
 
   isAuthenticated() {
@@ -51,7 +51,7 @@ class AuthService {
   logout () {
     return this.auth
       .$signOut()
-      .then(this._clearAuthData);
+      .then(() => this._clearAuthData);
   }
 }
 

@@ -11,9 +11,7 @@ class AppController {
 
   logout() {
     this.AuthService.logout()
-               .then(function() {
-                 this.$state.go('auth.login');
-               });
+        .then(() => this.$state.go('auth.login'));
   }
 }
 

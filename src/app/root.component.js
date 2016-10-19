@@ -1,5 +1,9 @@
+import RootHtml from './root.html';
+
+import '../sass/style.scss';
+
 const root = {
-  templateUrl: './root.html'
+  template: RootHtml
 };
 
 export default root;

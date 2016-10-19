@@ -5,7 +5,7 @@ class LoginController {
     this.$state = $state;
   }
 
-  $onInit () {
+  $onInit() {
     this.error = null;
     this.user = {
       email: '',
@@ -13,14 +13,13 @@ class LoginController {
     };
   };
 
-  loginUser (event) {
+  loginUser(event) {
     return this.AuthService
-      .login(event.user)
-      .then(function() {
-        this.$state.go('app');
-      }, function(reason) {
-        this.error = reason.message;
-      });
+               .login(event.user)
+               .then(
+                 () => this.$state.go('app'),
+                 reason => this.error = reason.message
+               );
   };
 }
 

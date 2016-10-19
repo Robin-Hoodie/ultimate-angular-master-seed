@@ -13,11 +13,12 @@ const contact = angular
   .module('components.contact', [
     UIRouter
   ])
+  .config(ContactRoute)
   .component('contactDetail', ContactDetailComponent)
   .component('contactEdit', ContactEditComponent)
   .component('contactNew', ContactNewComponent)
   .component('contactTag', ContactTagComponent)
-  .factory('contactService', ContactService)
+  .factory('ContactService', ContactService)
   .name;
 
 export default contact;

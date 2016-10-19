@@ -24,11 +24,7 @@ class ContactNewController {
   createNewContact(event) {
     return this.ContactService
                .createNewContact(event.contact)
-               .then(function(contact) {
-                 this.$state.go('contact', {
-                   id: contact.key
-                 });
-               });
+               .then(contact => this.$state.go('contact', {id: contact.key}));
   };
 }
 

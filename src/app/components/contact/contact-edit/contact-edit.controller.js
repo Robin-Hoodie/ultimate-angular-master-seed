@@ -12,7 +12,7 @@ class ContactEditController {
 
     return this.ContactService
                .updateContact(event.contact)
-               .finally(this.cfpLoadingBar.complete);
+               .finally(() => this.cfpLoadingBar.complete());
   };
 
   deleteContact(event) {
@@ -21,9 +21,7 @@ class ContactEditController {
     if (this.$window.confirm(message)) {
       return this.ContactService
                  .deleteContact(event.contact)
-                 .then(function() {
-                   this.$state.go('contacts');
-                 });
+                 .then(() => this.$state.go('contacts'));
     }
   };
 }

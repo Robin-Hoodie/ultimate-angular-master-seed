@@ -11,7 +11,7 @@ export default ($stateProvider) => {
       component: 'contactEdit',
       resolve: {
         contact: function($transition$, ContactService) {
-          var key = $transition$.params().id;
+          const key = $transition$.params().id;
           return ContactService.getContactById(key).$loaded();
         }
       }

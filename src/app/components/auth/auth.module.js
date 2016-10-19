@@ -1,6 +1,6 @@
 import angular from 'angular';
 import UIRouter from 'angular-ui-router';
-import Firebase from 'firebase';
+import AngularFire from 'angularfire';
 
 import AuthRoute from './auth.route';
 import AuthConfig from './auth.config';
@@ -13,7 +13,7 @@ import RegisterComponent from './register/register.component';
 const auth = angular
   .module('components.auth', [
     UIRouter,
-    Firebase
+    AngularFire
   ])
   .config(AuthConfig)
   .config(AuthRoute)

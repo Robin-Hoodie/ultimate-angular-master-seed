@@ -1,5 +1,10 @@
+import Logo from '../../img/logo.png';
+
 class AppSidebarController {
+
+
   $onInit () {
+    this.logo = Logo;
     this.contactTags = [{
       label: 'All Contacts',
       icon: 'star'
