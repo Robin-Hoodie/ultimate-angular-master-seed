@@ -15,7 +15,7 @@ class ContactTagController {
   updateTag(tag) {
     this.onChange({
       $event: {
-        tag: tag
+        tag
       }
     });
   };

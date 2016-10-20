@@ -23,19 +23,19 @@ class AuthService {
   login (user) {
     return this.auth
       .$signInWithEmailAndPassword(user.email, user.password)
-      .then(() => this._storeAuthData());
+      .then(response => this._storeAuthData(response));
   };
 
   register (user) {
     return this.auth
       .$createUserWithEmailAndPassword(user.email, user.password)
-      .then(() => this._storeAuthData);
+      .then(response => this._storeAuthData(response));
   };
 
   requireAuthentication() {
     return this.auth
       .$waitForSignIn()
-      .then(() => this._onSignIn);
+      .then(response => this._onSignIn(response));
   };
 
   isAuthenticated() {

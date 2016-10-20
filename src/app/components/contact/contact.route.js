@@ -15,5 +15,19 @@ export default ($stateProvider) => {
           return ContactService.getContactById(key).$loaded();
         }
       }
+    })
+    .state('contacts', {
+      parent: 'app',
+      url: '/contacts?filter',
+      component: 'contacts',
+      params: {
+        filter: {
+          value: 'none'
+        }
+      },
+      resolve: {
+        contacts: (ContactService) => ContactService.getContactList().$loaded(),
+        filter: ($transition$) => $transition$.params()
+      }
     });
 };

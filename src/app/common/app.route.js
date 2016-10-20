@@ -1,7 +1,7 @@
 export default ($stateProvider) => {
   $stateProvider
     .state('app', {
-      redirectTo: 'new',
+      redirectTo: 'contacts',
       url: '/app',
       data: {
         requiredAuth: true
