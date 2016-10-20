@@ -1,19 +1,10 @@
-var app = {
-  templateUrl: './app.html',
-  controller: 'AppController'
+import AppHtml from './app.html';
+import AppController from './app.controller';
+
+const app = {
+  template: AppHtml,
+  controller: AppController
 };
 
-angular
-  .module('common')
-  .component('app', app)
-  .config(function($stateProvider) {
-    $stateProvider
-      .state('app', {
-        redirectTo: 'new',
-        url: '/app',
-        data: {
-          requiredAuth: true
-        },
-        component: 'app'
-      });
-  });
+
+export default app;

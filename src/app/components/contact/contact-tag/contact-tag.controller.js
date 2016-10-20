@@ -1,27 +1,24 @@
-function ContactTagController() {
-  var ctrl = this;
+class ContactTagController {
 
-  ctrl.$onInit = function() {
-    ctrl.tags = [
+  $onInit() {
+    this.tags = [
       'friends', 'family', 'acquaintances', 'following'
     ];
   };
 
-  ctrl.$onChanges = function(changes) {
+  $onChanges(changes) {
     if (changes.tag) {
-      ctrl.tag = angular.copy(ctrl.tag);
+      this.tag = angular.copy(this.tag);
     }
   };
 
-  ctrl.updateTag = function(tag) {
-    ctrl.onChange({
+  updateTag(tag) {
+    this.onChange({
       $event: {
-        tag: tag
+        tag
       }
     });
   };
 }
 
-angular
-  .module('components.contact')
-  .controller('ContactTagController', ContactTagController);
+export default ContactTagController;

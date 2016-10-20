@@ -1,27 +1,29 @@
-function ContactEditController($window, $state, ContactService, cfpLoadingBar) {
-  var ctrl = this;
+class ContactEditController {
 
-  ctrl.updateContact = function(event) {
-    cfpLoadingBar.start();
+  constructor($window, $state, ContactService, cfpLoadingBar) {
+    this.$window = $window;
+    this.$state = $state;
+    this.ContactService = ContactService;
+    this.cfpLoadingBar = cfpLoadingBar;
+  }
 
-    return ContactService
-      .updateContact(event.contact)
-      .finally(cfpLoadingBar.complete);
+  updateContact(event) {
+    this.cfpLoadingBar.start();
+
+    return this.ContactService
+               .updateContact(event.contact)
+               .finally(() => this.cfpLoadingBar.complete());
   };
 
-  ctrl.deleteContact = function(event) {
-    var message = 'Delete ' + event.contact.name + ' from contacts?';
+  deleteContact(event) {
+    const message = 'Delete ' + event.contact.name + ' from contacts?';
 
-    if ($window.confirm(message)) {
-      return ContactService
-        .deleteContact(event.contact)
-        .then(function() {
-          $state.go('contacts');
-        });
+    if (this.$window.confirm(message)) {
+      return this.ContactService
+                 .deleteContact(event.contact)
+                 .then(() => this.$state.go('contacts'));
     }
   };
 }
 
-angular
-  .module('components.contact')
-  .controller('ContactEditController', ContactEditController);
+export default ContactEditController;

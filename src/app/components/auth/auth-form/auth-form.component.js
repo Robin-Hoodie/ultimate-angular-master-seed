@@ -1,14 +1,15 @@
-var authForm = {
+import AuthFormHtml from './auth-form.html';
+import AuthFormController from './auth-form.controller';
+
+const authForm = {
   bindings: {
     user: '<',
     button: '@',
     message: '@',
     onSubmit: '&'
   },
-  templateUrl: './auth-form.html',
-  controller: 'AuthFormController'
+  template: AuthFormHtml,
+  controller: AuthFormController
 };
 
-angular
-  .module('components.auth')
-  .component('authForm', authForm);
+export default authForm;

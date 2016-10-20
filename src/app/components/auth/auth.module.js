@@ -1,41 +1,27 @@
-angular
-  .module('components.auth', [
-    'ui.router',
-    'firebase'
-  ])
-  .config(function($firebaseRefProvider) {
-    var config = {
-      apiKey: "AIzaSyARTAzLNSX3-Q3A2Bc_xrbA8GfkYUIwGh0",
-      authDomain: "contacts-da438.firebaseapp.com",
-      databaseURL: "https://contacts-da438.firebaseio.com",
-      storageBucket: "contacts-da438.appspot.com",
-      messagingSenderId: "724031356081"
-    };
-    $firebaseRefProvider
-      .registerUrl({
-        default: config.databaseURL,
-        contacts: config.databaseURL + '/contacts'
-      });
-    firebase.initializeApp(config);
-  })
-  .run(function($transitions, $state, AuthService) {
-    $transitions.onStart({
-      to: function(state) {
-        return !!(state.data && state.data.requiredAuth);
-      }
-    }, function() {
-      return AuthService
-        .requireAuthentication()
-        .catch(function() {
-          return $state.target('auth.login');
-        });
-    });
+import angular from 'angular';
+import UIRouter from 'angular-ui-router';
+import AngularFire from 'angularfire';
 
-    $transitions.onStart({
-      to: 'auth.*'
-    }, function() {
-      if (AuthService.isAuthenticated()) {
-        return $state.target('app');
-      }
-    });
-  });
+import AuthRoute from './auth.route';
+import AuthConfig from './auth.config';
+import AuthRun from './auth.run';
+import AuthService from './auth.service';
+import AuthFormComponent from './auth-form/auth-form.component';
+import LoginComponent from './login/login.component';
+import RegisterComponent from './register/register.component';
+
+const auth = angular
+  .module('components.auth', [
+    UIRouter,
+    AngularFire
+  ])
+  .config(AuthConfig)
+  .config(AuthRoute)
+  .run(AuthRun)
+  .component('authForm', AuthFormComponent)
+  .component('login', LoginComponent)
+  .component('register', RegisterComponent)
+  .service('AuthService', AuthService)
+  .name;
+
+export default auth;

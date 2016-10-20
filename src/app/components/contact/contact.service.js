@@ -1,25 +1,15 @@
 function ContactService(AuthService, $firebaseRef, $firebaseArray, $firebaseObject) {
-  var ref = $firebaseRef.contacts;
-  var uid = AuthService.getUser().uid;
+  const ref = $firebaseRef.contacts;
+  const uid = AuthService.getUser().uid;
 
   return {
-    createNewContact: function(contact) {
-     return $firebaseArray(ref.child(uid)).$add(contact);
-    },
-    getContactById: function(id) {
-      return $firebaseObject(ref.child(uid).child(id));
-    },
-    updateContact: function(contact) {
-      return contact.$save();
-    },
-    deleteContact: function(contact) {
-      return contact.$remove();
-    }
+    createNewContact: contact => $firebaseArray(ref.child(uid)).$add(contact),
+    getContactById: id => $firebaseObject(ref.child(uid).child(id)),
+    updateContact: contact => contact.$save(),
+    deleteContact: contact => contact.$remove(),
+    getContactList: () => $firebaseArray(ref.child(uid))
   };
-
 
 }
 
-angular
-  .module('components.contact')
-  .factory('ContactService', ContactService);
+export default ContactService;

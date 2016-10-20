@@ -1,15 +1,18 @@
-function AppController(AuthService, $state) {
-  var ctrl = this;
-  ctrl.user = AuthService.getUser();
+class AppController {
 
-  ctrl.logout = function() {
-    AuthService.logout()
-      .then(function() {
-        $state.go('auth.login');
-      });
-  };
+  constructor(AuthService, $state) {
+    this.AuthService = AuthService;
+    this.$state = $state;
+  }
+
+  $onInit() {
+    this.user = this.AuthService.getUser();
+  }
+
+  logout() {
+    this.AuthService.logout()
+        .then(() => this.$state.go('login'));
+  }
 }
 
-angular
-  .module('common')
-  .controller('AppController', AppController);
+export default AppController;

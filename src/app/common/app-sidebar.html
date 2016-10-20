@@ -1,7 +1,7 @@
 <aside class="sidebar">
   <div class="sidebar__logo">
     <a href="">
-      <img src="/img/logo.png" alt="">
+      <img ng-src="{{ ::$ctrl.logo}}" alt="">
     </a>
   </div>
   <span class="sidebar__header">
@@ -12,8 +12,9 @@
       class="sidebar__item"
       ng-repeat="item in ::$ctrl.contactTags">
       <a
-        href=""
-        class="sidebar__link">
+        ui-sref="contacts({filter: item.state})"
+        class="sidebar__link"
+        ui-sref-active-eq="sidebar__link--active">
         <i class="material-icons">
           <span ng-bind="item.icon"></span>
         </i>

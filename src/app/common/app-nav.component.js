@@ -1,11 +1,11 @@
-var appNav = {
+import AppNavHtml from './app-nav.html';
+
+const appNav = {
   bindings: {
     user: '<',
     onLogout: '&'
   },
-  templateUrl: './app-nav.html'
+  template: AppNavHtml
 };
 
-angular
-  .module('common')
-  .component('appNav', appNav);
+export default appNav;

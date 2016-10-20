@@ -1,21 +1,18 @@
-function AuthFormController() {
-  var ctrl = this;
+class AuthFormController {
 
-  ctrl.$onChanges = function(changes) {
+  $onChanges (changes) {
     if (changes.user) {
-      ctrl.user = angular.copy(changes.user);
+      this.user = angular.copy(this.user);
     }
   };
 
-  ctrl.submitForm = function() {
-    ctrl.onSubmit({
+  submitForm () {
+    this.onSubmit({
       $event: {
-        user: ctrl.user
+        user: this.user
       }
     });
   };
 }
 
-angular
-  .module('components.auth')
-  .controller('AuthFormController', AuthFormController);
+export default AuthFormController;
