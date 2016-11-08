@@ -6,7 +6,7 @@
   "scripts": {
     "start": "rimraf dist/**/*.* && webpack-dev-server --inline",
     "test": "karma start",
-    "deploy": "gulp production --deploy"
+    "deploy": "webpack --config webpack-prod.config.js --profile --bail && firebase deploy"
   },
   "license": "MIT",
   "repository": "https://github.com/toddmotto/ultimate-angular-master-seed",
@@ -33,6 +33,7 @@
     "karma-jasmine": "^0.3.6",
     "karma-phantomjs-launcher": "^1.0.1",
     "karma-spec-reporter": "0.0.23",
+    "ng-annotate-loader": "^0.2.0",
     "node-sass": "^3.10.1",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",

@@ -1,5 +1,6 @@
 class LoginController {
 
+  /* @ngInject */
   constructor(AuthService, $state) {
     this.AuthService = AuthService;
     this.$state = $state;

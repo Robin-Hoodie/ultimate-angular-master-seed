@@ -1,4 +1,5 @@
-function run($transitions, $state, AuthService) {
+/* @ngInject */
+export default ($transitions, $state, AuthService) => {
   $transitions.onStart({
     to: (state) => {
       return !!(state.data && state.data.requiredAuth);
@@ -19,5 +20,3 @@ function run($transitions, $state, AuthService) {
     }
   });
 }
-
-export default run;

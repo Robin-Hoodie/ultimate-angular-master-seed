@@ -1,4 +1,6 @@
 class ContactsController {
+
+  /* @ngInject */
   constructor($filter, $state) {
     this.$filter = $filter;
     this.$state = $state;

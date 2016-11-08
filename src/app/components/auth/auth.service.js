@@ -1,5 +1,6 @@
 class AuthService {
 
+  /* @ngInject */
   constructor($firebaseAuth) {
     this.$firebaseAuth = $firebaseAuth;
     this.auth = $firebaseAuth();

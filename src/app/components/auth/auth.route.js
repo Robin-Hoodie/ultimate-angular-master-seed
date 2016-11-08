@@ -1,3 +1,4 @@
+/* @ngInject */
 export default ($stateProvider, $urlRouterProvider) => {
   $urlRouterProvider.otherwise('/auth/login');
 

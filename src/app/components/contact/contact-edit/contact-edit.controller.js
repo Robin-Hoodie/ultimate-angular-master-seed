@@ -1,5 +1,5 @@
 class ContactEditController {
-
+  /* @ngInject */
   constructor($window, $state, ContactService, cfpLoadingBar) {
     this.$window = $window;
     this.$state = $state;

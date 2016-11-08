@@ -1,14 +1,32 @@
-function ContactService(AuthService, $firebaseRef, $firebaseArray, $firebaseObject) {
-  const ref = $firebaseRef.contacts;
-  const uid = AuthService.getUser().uid;
+class ContactService {
 
-  return {
-    createNewContact: contact => $firebaseArray(ref.child(uid)).$add(contact),
-    getContactById: id => $firebaseObject(ref.child(uid).child(id)),
-    updateContact: contact => contact.$save(),
-    deleteContact: contact => contact.$remove(),
-    getContactList: () => $firebaseArray(ref.child(uid))
-  };
+  /* @ngInject */
+  constructor(AuthService, $firebaseRef, $firebaseArray, $firebaseObject) {
+    this.$firebaseArray = $firebaseArray;
+    this.$firebaseObject = $firebaseObject;
+    this.ref = $firebaseRef.contacts;
+    this.uid = AuthService.getUser().uid;
+  }
+
+  createNewContact(contact) {
+    return this.$firebaseArray(ref.child(this.uid)).$add(contact);
+  }
+
+  getContactById(id) {
+    return this.$firebaseObject(ref.child(this.uid).child(id));
+  }
+
+  updateContact(contact) {
+    return contact.$save();
+  }
+
+  deleteContact(contact) {
+    return contact.$remove();
+  }
+
+  getContactList() {
+    return this.$firebaseArray(ref.child(this.uid));
+  }
 
 }
 

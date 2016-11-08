@@ -1,3 +1,4 @@
+/* @ngInject */
 export default ($stateProvider) => {
   $stateProvider
     .state('app', {

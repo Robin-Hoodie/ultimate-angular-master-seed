@@ -1,5 +1,5 @@
 class ContactNewController {
-
+  /* @ngInject */
   constructor($state, ContactService) {
     this.$state = $state;
     this.ContactService = ContactService;

@@ -1,5 +1,6 @@
 class RegisterController {
 
+  /* @ngInject */
   constructor(AuthService, $state) {
     this.AuthService = AuthService;
     this.$state = $state;
@@ -16,11 +17,8 @@ class RegisterController {
   createUser(event) {
     return this.AuthService
                .register(event.user)
-               .then(function() {
-                 this.$state.go('app');
-               }, function(reason) {
-                 this.error = reason.message;
-               });
+               .then(() => this.$state.go('app'),
+                 reason => this.error = reason.message);
   };
 }
 

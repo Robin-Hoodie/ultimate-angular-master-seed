@@ -1,4 +1,5 @@
-function config($firebaseRefProvider) {
+/* @ngInject */
+export default ($firebaseRefProvider) => {
   const config = {
     apiKey: "AIzaSyARTAzLNSX3-Q3A2Bc_xrbA8GfkYUIwGh0",
     authDomain: "contacts-da438.firebaseapp.com",
@@ -13,5 +14,3 @@ function config($firebaseRefProvider) {
     });
   firebase.initializeApp(config);
 }
-
-export default config;

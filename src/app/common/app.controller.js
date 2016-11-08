@@ -1,5 +1,6 @@
 class AppController {
 
+  /* @ngInject */
   constructor(AuthService, $state) {
     this.AuthService = AuthService;
     this.$state = $state;
