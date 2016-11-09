@@ -18,7 +18,7 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loaders: ['babel', 'ng-annotate']
+        loaders: ['ng-annotate', 'babel']
       },
       {
         test: /\.html$/,
@@ -50,7 +50,8 @@ module.exports = {
       template: path.join(__dirname, 'src/index.html')
     }),
     new webpack.NoErrorsPlugin(),
-    new webpack.optimize.DedupePlugin()
+    new webpack.optimize.DedupePlugin(),
+    new webpack.optimize.UglifyJsPlugin()
   ]
 }
 
